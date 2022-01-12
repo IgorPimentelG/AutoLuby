@@ -35,8 +35,13 @@ export function AuthProvider({ children }) {
 
     }
 
+    function handlerLogout() {
+        setAuthenticated(false);
+        setUser(null);
+    }
+
     return(
-        <AuthContext.Provider value={{authenticated, user, handlerSignIn}}>
+        <AuthContext.Provider value={{authenticated, user, handlerSignIn, handlerLogout}}>
             {children}
         </AuthContext.Provider>
     );

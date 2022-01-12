@@ -1,9 +1,5 @@
 import styled from "styled-components";
 
-export const Button = styled.TouchableOpacity`
-   
-`;
-
 export const ContainerMenuOption = styled.View`
     border-radius: 3px;
     border-color: #E6E6E6;
@@ -13,8 +9,8 @@ export const ContainerMenuOption = styled.View`
 `;
 
 export const ContainerButton = styled.View`
+    flex: 1;
     flex-direction: row;
-    height: 100px;
     justify-content: space-between;
 `;
 
@@ -36,7 +32,8 @@ export const Subtitle = styled.Text`
 `;
 
 export const TextFooter = styled.Text`
-    margin-top: 10px;
+    margin-top: 5px;
+    margin-right: 5px;
     color: #F54A48;
     font-weight: bold;
     font-size: 12px;
@@ -44,8 +41,14 @@ export const TextFooter = styled.Text`
     text-transform: uppercase;
 `;
 
+export const ContainerFooter = styled.View`
+    flex: 1;
+    justify-content: flex-end;
+`;
+
 export const Image = styled.Image`
     width: 115px;
-    height: 100px;
-    border-radius: 3px;
+    height: 105px;
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
 `;

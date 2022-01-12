@@ -1,5 +1,6 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { 
     ContainerMenuOption,
     ContainerButton,   
@@ -8,18 +9,27 @@ import {
     Subtitle,
     TextFooter,
     Image,
+    ContainerFooter,
 } from './styles';
 
+// @Param data - contém os dados dos botões do menu
 export default function MenuOption({ data }) {
+
+    const navigation = useNavigation();
+
     return(
         <ContainerMenuOption elevation={1}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={ () => navigation.navigate(data.navigation) }>
                 <ContainerButton>
 
                     <ContainerText>
                         <Title>{data.title}</Title>
                         <Subtitle>{data.subtitle}</Subtitle>
-                        <TextFooter>{data.textFooter}</TextFooter>
+
+                        <ContainerFooter>
+                            <TextFooter>{data.textFooter}</TextFooter>
+                        </ContainerFooter>
+                        
                     </ContainerText>
 
                     <Image source={data.image} resizeMode='cover'/>
