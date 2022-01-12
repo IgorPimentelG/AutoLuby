@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, TextInput, Text, StyleSheet } from 'react-native';
+import { Text } from 'react-native';
 import IconValidation from '../IconValidation';
+import { Container, Input } from './styles';
 
 export default function(props) {
 
@@ -24,9 +25,8 @@ export default function(props) {
     }
 
     return(
-        <View style={[styles.containerInput, setBorderColor()]}>
-            <TextInput
-                style={styles.input}
+        <Container style={setBorderColor()}>
+            <Input
                 placeholder={props.placeholder}
                 placeholderTextColor='#A2A2A2'
                 value={props.value}
@@ -35,25 +35,6 @@ export default function(props) {
                 secureTextEntry={props.password}
             />
             {props.valid !== null ? <IconValidation valid={props.valid}/> : <Text></Text>}
-        </View>
+        </Container>
     );
 }
-
-const styles = StyleSheet.create({
-    containerInput: {
-        flexDirection: 'row',
-        height: 45,
-        width: '100%',
-        alignItems: 'center',
-        marginBottom: 25,
-        backgroundColor: '#F9F9F9',
-        borderRadius: 3,
-        borderColor: '#E6E6E6'
-    },
-
-    input: {
-        marginLeft: 10,
-        color: '#A2A2A2',
-        flex: 1
-    }
-});

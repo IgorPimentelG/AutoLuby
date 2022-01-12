@@ -20,6 +20,11 @@ export function AuthProvider({ children }) {
             vehicles: []
         }
     });
+    const [header, setHeader] = useState({
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': null
+    });
 
     // Fetch
     async function handlerSignIn(credentials) {
@@ -27,6 +32,11 @@ export function AuthProvider({ children }) {
         await api.post('/login', credentials)
         .then((res) => {
             setUser(res.data);
+            setHeader({
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${res.data.token}`
+            });
             setAuthenticated(true);
         })
         .catch((error) => {
@@ -41,7 +51,7 @@ export function AuthProvider({ children }) {
     }
 
     return(
-        <AuthContext.Provider value={{authenticated, user, handlerSignIn, handlerLogout}}>
+        <AuthContext.Provider value={{authenticated, user, header, handlerSignIn, handlerLogout}}>
             {children}
         </AuthContext.Provider>
     );
