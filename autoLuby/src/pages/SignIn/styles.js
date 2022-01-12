@@ -1,10 +1,16 @@
 import styled from "styled-components";
 
+export const ContainerKeyboardAvoiding = styled.KeyboardAvoidingView`
+    flex: 1;
+    padding: 20px;
+    background-color: #FFF;
+`;
+
+// Container do conteúdo da página
 export const Container = styled.View`
     flex: 1;
     align-items: center;
-    padding: 20px;
-    background-color: #FFF;
+    justify-content: center;
 `;
 
 export const ContainerLogo = styled.View`
@@ -18,13 +24,24 @@ export const ContainerLogo = styled.View`
     margin: 30px;
 `;
 
+export const ContainerForm = styled.View`
+    width: 100%;
+`;
+
+export const ContainerMultipleTextLine = styled.View`
+    flex-direction: row;
+`;
+
+export const ContainerOptions = styled.View`
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+`;
+
 export const Logo = styled.Image`
     width: 65px;
     height: 70px;
-`;
-
-export const ContainerForm = styled.View`
-    width: 100%;
 `;
 
 export const LabelInput = styled.Text`
@@ -34,11 +51,13 @@ export const LabelInput = styled.Text`
     margin-bottom: 5px;
 `;
 
-export const TextButton = styled.Text`
+export const Label = styled.Text`
+    color: #A2A2A2;
+    font-size: 14px;
     font-weight: bold;
-    font-size: 20px;
-    color: #FFF;
+    margin-bottom: 40px;
 `;
+
 
 export const Button = styled.TouchableOpacity`
     width: 100%;
@@ -50,9 +69,6 @@ export const Button = styled.TouchableOpacity`
     margin-bottom: 40px;
 `;
 
-export const ContainerMultipleTextLine = styled.View`
-    flex-direction: row;
-`;
 
 export const DefaultTextTitle = styled.Text`
     font-size: 26px;
@@ -68,11 +84,10 @@ export const TextTitleBlack = styled(DefaultTextTitle)`
     color: #000;
 `;
 
-export const Label = styled.Text`
-    color: #A2A2A2;
-    font-size: 14px;
+export const TextButton = styled.Text`
     font-weight: bold;
-    margin-bottom: 40px;
+    font-size: 20px;
+    color: #FFF;
 `;
 
 export const TextButtonLink = styled.Text`
@@ -81,9 +96,3 @@ export const TextButtonLink = styled.Text`
     color: #F54A48;
 `;
 
-export const ContainerOptions = styled.View`
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 25px;
-`;

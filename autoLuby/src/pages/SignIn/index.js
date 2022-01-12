@@ -1,30 +1,33 @@
-import React, { useState, useEffect} from "react";
-import { useAuth } from "../../providers/auth";
+import React, { useState, useEffect } from "react";
 import { useNavigation } from '@react-navigation/native';
+import * as yup from 'yup';
+import { 
+    View,
+    Keyboard, 
+    TouchableOpacity, 
+    TouchableWithoutFeedback
+} from 'react-native';
+import { 
+    ContainerKeyboardAvoiding, 
+    Container,
+    ContainerLogo, 
+    ContainerOptions,
+    ContainerForm,
+    ContainerMultipleTextLine,
+    Logo, 
+    TextButton, 
+    TextTitleRed,
+    TextButtonLink,
+    TextTitleBlack,
+    Label,
+    LabelInput, 
+    Button
+} from "./styles"; 
+
+import { useAuth } from "../../providers/auth";
 import CheckBox from '@react-native-community/checkbox'; 
 import Loading from '../../components/Loading';
 import Input from "../../components/Input";
-import * as yup from 'yup';
-import { TouchableOpacity, 
-         View,
-         KeyboardAvoidingView,
-         TouchableWithoutFeedback,
-         Keyboard 
-} from 'react-native';
-import { Button,
-         Container, 
-         ContainerLogo, 
-         Logo, 
-         TextButton, 
-         ContainerForm,
-         LabelInput, 
-         ContainerMultipleTextLine,
-         TextTitleBlack,
-         Label,
-         TextTitleRed,
-         TextButtonLink,
-         ContainerOptions
-} from "./styles"; 
 
 
 export default function SignIn() {
@@ -36,29 +39,27 @@ export default function SignIn() {
     const [password, setPassword] = useState('');
     const [lembrarSenha, setLembrarSenha] = useState(true);
     const [loading, setLoading] = useState(false);
-    const [statusValidation, setStatusValidation] = useState({
-        valid: null,
-        message: ''
-    });
+    const [statusValidation, setStatusValidation] = useState({valid: null, message: ''});
 
     useEffect(() => {
+
+        // Alterar navegação quando o usuário estiver autenticado
         if(authenticated) {
             navigation.navigate('Home');
         }
     }, [authenticated]);
 
     async function signIn() {
-        
+
         if(await validation()) {
             setStatusValidation({valid: true, message: 'valid'});
-            setLoading(true);                       // Iniciar modal de carregamento
-            await handlerSignIn({email, password});
+            setLoading(true);                                       // Iniciar modal de carregamento
+            await handlerSignIn({email, password});                 // Método de autenticação
             setLoading(false);
-            setStatusValidation({valid: false, message: 'Incorrect input'});
-        } else {
-            setStatusValidation({valid: false, message: 'Wrong input'});
-        }
-
+        } 
+        
+        // Autenticação ou validação falhou
+        setStatusValidation({valid: false, message: 'Wrong input'});
     }
 
     async function validation() {
@@ -78,7 +79,7 @@ export default function SignIn() {
     }
     
     return(
-        <KeyboardAvoidingView style={{flex: 1}}>
+        <ContainerKeyboardAvoiding behavior='padding'>
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 
                 <Container>
@@ -99,23 +100,25 @@ export default function SignIn() {
                     <ContainerForm>
                         <LabelInput>Endereço de email</LabelInput>
 
-                        <Input 
+                        <Input
                             placeholder='@mail.com' 
-                            email={email} 
+                            value={email} 
                             onValueChange={setEmail} 
-                            valid={statusValidation.valid}
+                            status={statusValidation}
+                            setStatus={setStatusValidation}
                             password={false}
                         />
-                       
+                    
                         <LabelInput>Senha</LabelInput>
                         <Input 
                             placeholder='senha' 
                             value={password} 
                             onValueChange={setPassword} 
-                            valid={statusValidation.valid}
+                            status={statusValidation}
+                            setStatus={setStatusValidation}
                             password={true}
                         />
-                    
+
                         <ContainerOptions>
 
                             <View style={{flexDirection: 'row', alignItems: 'center'}}>
@@ -127,14 +130,17 @@ export default function SignIn() {
                                 />
                                 <TextButtonLink>Lembrar minha senha</TextButtonLink>
                             </View>
-                
+
                             <TouchableOpacity>
                                 <TextButtonLink>Esqueceu a senha?</TextButtonLink>
                             </TouchableOpacity>
 
                         </ContainerOptions>
 
-                        <Button onPress={ signIn }>                    
+                        <Button onPress={ () => {
+                            Keyboard.dismiss();
+                            signIn();
+                        }}>                    
                             <TextButton>Entrar</TextButton>
                         </Button>
                     </ContainerForm>
@@ -149,6 +155,6 @@ export default function SignIn() {
                 </Container>
 
             </TouchableWithoutFeedback>
-        </KeyboardAvoidingView>
+        </ContainerKeyboardAvoiding>
     );
 }
