@@ -28,7 +28,7 @@ import { useAuth } from "../../providers/auth";
 import CheckBox from '@react-native-community/checkbox'; 
 import Loading from '../../components/Loading';
 import Input from "../../components/Input";
-
+import Statusbar from '../../components/StatusBar';
 
 export default function SignIn() {
 
@@ -91,8 +91,9 @@ export default function SignIn() {
     return(
         <ContainerKeyboardAvoiding behavior='padding'>
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-
                 <Container>
+
+                    <Statusbar/>
             
                     <Loading visible={loading}/>
 

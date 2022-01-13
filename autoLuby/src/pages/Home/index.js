@@ -4,6 +4,7 @@ import { useAuth } from '../../providers/auth';
 import { Container, Title } from './styles';
 
 import MenuOption from '../../components/MenuOption';
+import Statusbar from '../../components/StatusBar';
 
 export default function Home() {
 
@@ -39,6 +40,8 @@ export default function Home() {
 
     return(
         <Container>
+
+            <Statusbar />
 
             <Title>Bem-Vindo, {user.user.name}</Title>
 
