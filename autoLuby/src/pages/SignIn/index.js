@@ -28,7 +28,7 @@ import { useAuth } from "../../providers/auth";
 import CheckBox from '@react-native-community/checkbox'; 
 import Loading from '../../components/Loading';
 import Input from "../../components/Input";
-import Statusbar from '../../components/StatusBar';
+import Statusbar from '../../components/Statusbar';
 
 export default function SignIn() {
 

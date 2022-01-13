@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FlatList, TouchableOpacity, View } from 'react-native';
+import { FlatList, TouchableOpacity, View, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import { 
     Title,
@@ -71,62 +71,65 @@ export default function HeaderList( { title, inputSearch, setValueInputSearch, h
 
     return(
 
-        <View style={{marginBottom: 10}}>
-            <Title>{title}</Title>
+        <TouchableWithoutFeedback onPress={ Keyboard.dismiss }>
+            <View style={{marginBottom: 10}}>
+                <Title>{title}</Title>
 
-            <ContainerInputSearch elevation={2}>
-               
-                <InputSearch
-                    value={inputSearch}
-                    onChangeText={(value) => setValueInputSearch(value)}
-                />
-
-                <TouchableOpacity onPress={ handlerSearch }>
-                    <Icon 
-                        name='search'
-                        size={25}
-                        color='#495057'
-                        style={{marginRight: 10}}
-                    />
-                </TouchableOpacity>
-
-            </ContainerInputSearch>
-
-            <ContainerPagination>
-
-                <ButtonPagination onPress={ previous }>
-                    <ContainerButtonPagination>
-                            <Icon 
-                                name='arrow-left'
-                                size={20}
-                                color='#495057'
-                                style={{marginRight: 5}}
-                            />
-                            <Label>Anterior</Label>
-                    </ContainerButtonPagination>
-                </ButtonPagination>
-               
-                <FlatList
-                    data={pageNumbers}
-                    renderItem={({item}) => <Page data={item}/>}
-                    horizontal={true}
-                    contentContainerStyle={{justifyContent: 'space-around', flexGrow: 1}}
-                />
-
-                <ButtonPagination onPress={ nextPage }>
-                    <ContainerButtonPagination>
-                            <Label>Próxima</Label>
-                            <Icon 
-                                name='arrow-right'
-                                size={20}
-                                color='#495057'
-                                style={{marginLeft: 5}}
-                            />
-                    </ContainerButtonPagination>
-                </ButtonPagination>
+                <ContainerInputSearch elevation={2}>
                 
-            </ContainerPagination>
-        </View>
+                    <InputSearch
+                        value={inputSearch}
+                        onChangeText={(value) => setValueInputSearch(value)}
+                    />
+
+                    <TouchableOpacity onPress={ handlerSearch }>
+                        <Icon 
+                            name='search'
+                            size={25}
+                            color='#495057'
+                            style={{marginRight: 10}}
+                        />
+                    </TouchableOpacity>
+
+                </ContainerInputSearch>
+
+                <ContainerPagination>
+
+                    <ButtonPagination onPress={ previous }>
+                        <ContainerButtonPagination>
+                                <Icon 
+                                    name='arrow-left'
+                                    size={20}
+                                    color='#495057'
+                                    style={{marginRight: 5}}
+                                />
+                                <Label>Anterior</Label>
+                        </ContainerButtonPagination>
+                    </ButtonPagination>
+                
+                    <FlatList
+                        data={pageNumbers}
+                        renderItem={({item}) => <Page data={item}/>}
+                        horizontal={true}
+                        contentContainerStyle={{justifyContent: 'space-around', flexGrow: 1}}
+                    />
+
+                    <ButtonPagination onPress={ nextPage }>
+                        <ContainerButtonPagination>
+                                <Label>Próxima</Label>
+                                <Icon 
+                                    name='arrow-right'
+                                    size={20}
+                                    color='#495057'
+                                    style={{marginLeft: 5}}
+                                />
+                        </ContainerButtonPagination>
+                    </ButtonPagination>
+                    
+                </ContainerPagination>
+            </View>
+        </TouchableWithoutFeedback>
+
     );
 }
 

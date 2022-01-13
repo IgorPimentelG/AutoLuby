@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Alert, FlatList } from "react-native";
-import { Container, ContainerText, Text } from "./styles";
+import { Container } from "./styles";
 import { useAuth } from "../../providers/auth";
 
 import { api } from '../../services/api';
 import HeaderList from '../../components/HeaderList';
 import Loading from '../../components/Loading';
 import CardVehicles from '../../components/CardVehicles';
+import Warning from '../../components/Warning';
 
 export default function AllVehicles() {
     
@@ -75,6 +76,7 @@ export default function AllVehicles() {
     }
 
     return(
+        
         <Container>
 
             <Loading visible={loading} />
@@ -87,17 +89,15 @@ export default function AllVehicles() {
             />
 
             { allVehicles.length === 0 ? 
-                <ContainerText>
-                     <Text>Nenhum veículo foi encontrado</Text>
-                </ContainerText>
+                <Warning message='Nenhum veículo foi encontrado'/>
                 :
                 <FlatList
-                data={allVehicles}
-                renderItem={({item}) => <CardVehicles data={item}/>}
+                    data={allVehicles}
+                    renderItem={({item}) => <CardVehicles data={item}/>}
                 />
             }
 
-           
         </Container>
+   
     );
 }

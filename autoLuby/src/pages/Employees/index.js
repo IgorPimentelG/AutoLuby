@@ -7,6 +7,7 @@ import { api } from '../../services/api';
 import HeaderList from '../../components/HeaderList';
 import CardEmployees from '../../components/CardEmployees';
 import Loading from '../../components/Loading';
+import Warning from '../../components/Warning';
 
 export default function Employees() {
 
@@ -34,6 +35,7 @@ export default function Employees() {
     }, []);
 
     return(
+
         <Container>
 
             <Loading visible={loading}/>
@@ -44,12 +46,17 @@ export default function Employees() {
                 setValueInputSearch={ setInputSearch }
                 handlerSearch={ () => {Keyboard.dismiss()} }
             />
-            
-            <FlatList
-                data={employees}
-                renderItem={({item}) => <CardEmployees data={item}/>}
-            />
 
+            { employees.length === 0 ?
+                <Warning message='Nenhum funcionário foi encontrado'/>
+                :
+                <FlatList
+                    data={employees}
+                    renderItem={({item}) => <CardEmployees data={item}/>}
+                />
+            }
+            
         </Container>
+        
     );
 }

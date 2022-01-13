@@ -4,7 +4,7 @@ import { useAuth } from '../../providers/auth';
 import { Container, Title } from './styles';
 
 import MenuOption from '../../components/MenuOption';
-import Statusbar from '../../components/StatusBar';
+import Statusbar from '../../components/Statusbar';
 
 export default function Home() {
 
