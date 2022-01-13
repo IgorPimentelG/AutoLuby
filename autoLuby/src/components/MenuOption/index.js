@@ -18,10 +18,9 @@ export default function MenuOption({ data }) {
     const navigation = useNavigation();
 
     return(
-        <ContainerMenuOption elevation={1}>
+        <ContainerMenuOption>
             <TouchableOpacity onPress={ () => navigation.navigate(data.navigation) }>
                 <ContainerButton>
-
                     <ContainerText>
                         <Title>{data.title}</Title>
                         <Subtitle>{data.subtitle}</Subtitle>

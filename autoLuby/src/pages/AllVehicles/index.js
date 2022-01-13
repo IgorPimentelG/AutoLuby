@@ -27,7 +27,6 @@ export default function AllVehicles() {
             });
 
             setLoading(false);
-        
         }
 
         loadData();

@@ -1,11 +1,5 @@
 import styled from 'styled-components';
 
-export const Title = styled.Text`
-    font-size: 28px;
-    font-weight: bold;
-    color: #495057;
-`;
-
 export const ContainerInputSearch = styled.View`
     flex-direction: row;
     margin-top: 20px;
@@ -17,18 +11,24 @@ export const ContainerInputSearch = styled.View`
     height: 40px;
 `;
 
-export const InputSearch = styled.TextInput`
-    flex: 1;
-    margin-left: 10px;
-    color: #A2A2A2;
-`;
-
 export const ContainerPagination = styled.View`
     margin-top: 15px;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     width: 100%;
+`;
+
+export const ContainerButtonPagination = styled.View`
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const InputSearch = styled.TextInput`
+    flex: 1;
+    margin-left: 10px;
+    color: #A2A2A2;
 `;
 
 export const ButtonPagination = styled.TouchableOpacity`
@@ -40,18 +40,19 @@ export const ButtonPagination = styled.TouchableOpacity`
     background-color: #FFF;
     align-items: center;
     justify-content: space-between;
+    elevation: 2;
+`;
+
+export const Title = styled.Text`
+    font-size: 28px;
+    font-weight: bold;
+    color: #495057;
 `;
 
 export const Label = styled.Text`
     font-size: 16px;
     font-weight: bold;
     color: #495057;
-`;
-
-export const ContainerButtonPagination = styled.View`
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
 `;
 
 export const LabelNumberPage = styled(Label)`

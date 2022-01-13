@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, View } from "react-native";
-import { useAuth } from '../../providers/auth';
 import Icon from 'react-native-vector-icons/Feather';
+import { useAuth } from '../../providers/auth';
 
 export default function ButtonLogout() {
 

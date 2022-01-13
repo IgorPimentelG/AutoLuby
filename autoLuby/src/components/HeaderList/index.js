@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FlatList, View } from 'react-native';
+import { FlatList, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import { 
     Title,
@@ -21,6 +21,7 @@ export default function HeaderList( { title } ) {
         {number: 3, isActive: false}
     ]);
 
+    // Handler do botão de avançar página
     function nextPage() {
 
         let next = 1;
@@ -44,6 +45,7 @@ export default function HeaderList( { title } ) {
         setPageNumbers(newState);
     }
 
+    // Handler do botão voltar página
     function previous() {
 
         let previus = 3;
@@ -72,30 +74,35 @@ export default function HeaderList( { title } ) {
         <View style={{marginBottom: 10}}>
             <Title>{title}</Title>
 
-            <ContainerInputSearch>
-
+            <ContainerInputSearch elevation={1}>
+               
                 <InputSearch />
 
-                <Icon 
-                    name='search'
-                    size={25}
-                    color='#495057'
-                    style={{marginRight: 10}}
-                />
-            </ContainerInputSearch>
-            <ContainerPagination>
-                <ButtonPagination onPress={ previous }>
-                <ContainerButtonPagination>
-                        <Icon 
-                            name='arrow-left'
-                            size={20}
-                            color='#495057'
-                            style={{marginRight: 5}}
-                        />
-                        <Label>Anterior</Label>
-                </ContainerButtonPagination>
-                </ButtonPagination>
+                <TouchableOpacity>
+                    <Icon 
+                        name='search'
+                        size={25}
+                        color='#495057'
+                        style={{marginRight: 10}}
+                    />
+                </TouchableOpacity>
 
+            </ContainerInputSearch>
+
+            <ContainerPagination>
+
+                <ButtonPagination onPress={ previous }>
+                    <ContainerButtonPagination>
+                            <Icon 
+                                name='arrow-left'
+                                size={20}
+                                color='#495057'
+                                style={{marginRight: 5}}
+                            />
+                            <Label>Anterior</Label>
+                    </ContainerButtonPagination>
+                </ButtonPagination>
+               
                 <FlatList
                     data={pageNumbers}
                     renderItem={({item}) => <Page data={item}/>}
@@ -104,16 +111,17 @@ export default function HeaderList( { title } ) {
                 />
 
                 <ButtonPagination onPress={ nextPage }>
-                <ContainerButtonPagination>
-                        <Label>Próxima</Label>
-                        <Icon 
-                            name='arrow-right'
-                            size={20}
-                            color='#495057'
-                            style={{marginLeft: 5}}
-                        />
-                </ContainerButtonPagination>
+                    <ContainerButtonPagination>
+                            <Label>Próxima</Label>
+                            <Icon 
+                                name='arrow-right'
+                                size={20}
+                                color='#495057'
+                                style={{marginLeft: 5}}
+                            />
+                    </ContainerButtonPagination>
                 </ButtonPagination>
+                
             </ContainerPagination>
         </View>
     );

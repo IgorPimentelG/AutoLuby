@@ -39,7 +39,7 @@ export default function CardVehicles( {data} ) {
     }
     
     return(
-        <Container>
+        <Container elevation={2}>
 
             <View style={{alignSelf: 'flex-start'}}>
                 <TextStatus style={status()}>{data.status}</TextStatus>

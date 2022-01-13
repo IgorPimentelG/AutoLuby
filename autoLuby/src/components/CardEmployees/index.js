@@ -14,10 +14,11 @@ import {
 
 export default function CardEmployees( {data} ) {
 
+    // Formatação do salário
     const salaryFormat = data.salary.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
     return(
-        <Container>
+        <Container elevation={2}>
             <Title>{data.name}</Title>
             
             <ContainerRow>
@@ -44,6 +45,4 @@ export default function CardEmployees( {data} ) {
            
         </Container>
     );
-    
-   
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
 import { useAuth } from '../../providers/auth';
 import { Container, Title } from './styles';
+
 import MenuOption from '../../components/MenuOption';
 
 export default function Home() {
@@ -38,7 +39,7 @@ export default function Home() {
 
     return(
         <Container>
-            
+
             <Title>Bem-Vindo, {user.user.name}</Title>
 
             <FlatList

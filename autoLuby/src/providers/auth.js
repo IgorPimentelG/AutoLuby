@@ -26,7 +26,6 @@ export function AuthProvider({ children }) {
         'Authorization': null
     });
 
-    // Fetch
     async function handlerSignIn(credentials) {
 
         await api.post('/login', credentials)
@@ -42,7 +41,6 @@ export function AuthProvider({ children }) {
         .catch((error) => {
             setAuthenticated(false);
         });
-
     }
 
     function handlerLogout() {

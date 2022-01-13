@@ -5,13 +5,17 @@ export const ContainerMenuOption = styled.View`
     border-color: #E6E6E6;
     border-width: 1px;
     margin-bottom: 20px;
-    box-shadow: 6px 6px 8px rgba(139, 139, 139, 0.18);
 `;
 
 export const ContainerButton = styled.View`
     flex: 1;
     flex-direction: row;
     justify-content: space-between;
+`;
+
+export const ContainerFooter = styled.View`
+    flex: 1;
+    justify-content: flex-end;
 `;
 
 export const ContainerText = styled.View`
@@ -39,11 +43,6 @@ export const TextFooter = styled.Text`
     font-size: 12px;
     text-align: right;
     text-transform: uppercase;
-`;
-
-export const ContainerFooter = styled.View`
-    flex: 1;
-    justify-content: flex-end;
 `;
 
 export const Image = styled.Image`

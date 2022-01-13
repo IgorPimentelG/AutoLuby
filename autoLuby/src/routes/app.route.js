@@ -1,5 +1,5 @@
 import React from "react";
-import { TouchableOpacity, View } from "react-native";
+import { StatusBar, TouchableOpacity, View } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Icon from 'react-native-vector-icons/Feather';
 
@@ -23,7 +23,7 @@ export default function AuthRoute() {
     }
 
     return(
-        <Stack.Navigator >
+        <Stack.Navigator>
             <Stack.Screen name='Home' component={Home} options={{
                 title: 'HOME',
                 headerTitleAlign: 'center',
