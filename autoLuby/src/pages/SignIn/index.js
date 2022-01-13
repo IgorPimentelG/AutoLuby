@@ -40,14 +40,20 @@ export default function SignIn() {
     const [lembrarSenha, setLembrarSenha] = useState(true);
     const [loading, setLoading] = useState(false);
     const [statusValidation, setStatusValidation] = useState({valid: null, message: ''});
+    const [isUnmount, setIsUnmount] = useState(false);
 
     useEffect(() => {
 
-        // Alterar navegação quando o usuário estiver autenticado
         if(authenticated) {
             navigation.navigate('Home');
         }
+
+        return () => {
+            setIsUnmount(true);
+        }
+
     }, [authenticated]);
+    
 
     async function signIn() {
 
@@ -55,11 +61,15 @@ export default function SignIn() {
             setStatusValidation({valid: true, message: 'valid'});
             setLoading(true);                                       // Iniciar modal de carregamento
             await handlerSignIn({email, password});                 // Método de autenticação
-            setLoading(false);
         } 
-        
-        // Autenticação ou validação falhou
-        setStatusValidation({valid: false, message: 'Wrong input'});
+
+        // Alterar navegação quando o usuário estiver autenticado
+        // Não executar os setStates quando o componente for ser desmontado
+        if(!isUnmount) {
+            // Autenticação ou validação falhou
+            setStatusValidation({valid: false, message: 'Wrong input'});
+            setLoading(false);
+        }
     }
 
     async function validation() {
