@@ -12,7 +12,7 @@ import {
     LabelNumberPage
 } from './styles';
 
-export default function HeaderList( { title } ) {
+export default function HeaderList( { title, inputSearch, setValueInputSearch, handlerSearch } ) {
 
     const [page, setPage] = useState(1);
     const [pageNumbers, setPageNumbers] = useState([
@@ -74,11 +74,14 @@ export default function HeaderList( { title } ) {
         <View style={{marginBottom: 10}}>
             <Title>{title}</Title>
 
-            <ContainerInputSearch elevation={1}>
+            <ContainerInputSearch elevation={2}>
                
-                <InputSearch />
+                <InputSearch
+                    value={inputSearch}
+                    onChangeText={(value) => setValueInputSearch(value)}
+                />
 
-                <TouchableOpacity>
+                <TouchableOpacity onPress={ handlerSearch }>
                     <Icon 
                         name='search'
                         size={25}

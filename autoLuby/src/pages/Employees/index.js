@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Alert, FlatList } from 'react-native';
+import { Alert, FlatList, Keyboard } from 'react-native';
 import { Container } from "./styles";
 
 import { useAuth } from '../../providers/auth';
@@ -11,6 +11,7 @@ import Loading from '../../components/Loading';
 export default function Employees() {
 
     const { header } = useAuth();
+    const [inputSearch, setInputSearch] = useState('');
     const [loading, setLoading] = useState(true);
     const [employees, setEmployees] = useState([]);
 
@@ -39,6 +40,9 @@ export default function Employees() {
 
             <HeaderList 
                 title='Listagem de funcionários da empresa'
+                inputSearch={ inputSearch }
+                setValueInputSearch={ setInputSearch }
+                handlerSearch={ () => {Keyboard.dismiss()} }
             />
             
             <FlatList
