@@ -32,7 +32,7 @@ export const TextStatus = styled.Text`
 `;
 
 export const TextModel = styled.Text`
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     color: #495057;
     margin-top: 10px;

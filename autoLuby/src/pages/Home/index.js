@@ -23,7 +23,7 @@ export default function Home() {
             {
                 image: require('../../assets/images/menu-2.png'),
                 title: 'Listagem geral de veículos',
-                subtitle: 'Listagem de veículos de toda empresa',
+                subtitle: 'Listagem de veículos vendidos de toda empresa',
                 textFooter: `${user.totalVehicles} veículos`,
                 navigation: 'AllVehicles'
             },

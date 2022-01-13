@@ -21,7 +21,7 @@ export default function AllVehicles() {
         
             await api.get('/vehicles?noPaginate', {headers: header})
             .then((res) => {
-                setAllVehicles(res.data.vehicles);
+               filterVihicles(res.data.vehicles);
             })
             .catch(() => {
                 Alert('Erro ao carregar os dados!');
@@ -46,7 +46,7 @@ export default function AllVehicles() {
 
            await api.get(`/vehicles?noPaginate&model=${modelo}`, {headers: header})
            .then((res) => {
-                setAllVehicles(res.data.vehicles);
+                filterVihicles(res.data.vehicles);
            })
            .catch((error) => {
                Alert('Erro ao carregar os dados!');
@@ -62,13 +62,25 @@ export default function AllVehicles() {
         return texto[0].toUpperCase() + texto.slice(1);
     }
 
+    function filterVihicles(vehicles) {
+
+        const veiculosVendidos = vehicles.filter(
+            (elemento) => {
+                if(elemento.status === 'Vendido') {
+                    return elemento;
+                }
+        });
+
+        setAllVehicles(veiculosVendidos);
+    }
+
     return(
         <Container>
 
             <Loading visible={loading} />
 
             <HeaderList 
-                title='Listagem geral de veículos'
+                title='Listagem geral de veículos vendidos'
                 inputSearch={ inputSearch }
                 setValueInputSearch={ setInputSearch }
                 handlerSearch={ handlerSearch }
